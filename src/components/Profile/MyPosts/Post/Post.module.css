@@ -1,0 +1,21 @@
+.item {
+  margin-bottom: 20px;
+  display: block;
+}
+
+.img {
+  margin-right: 25px;
+  float: left;
+}
+.img img {
+  width: 150px;
+  border-radius: 40%;
+}
+
+.content {
+  margin-left: 200px;
+}
+.text {
+  font-size: 1.1rem;
+  width: 95%;
+}
