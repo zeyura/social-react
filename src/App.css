@@ -40,22 +40,6 @@ a:hover {
   }
 }
 
-/* HEADER */
-.App-header {
-  background-color: white;
-  height: 80px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: left;
-  font-size: calc(8px + 3vmin);
-  border-bottom: 1px solid lightgrey;
-}
-
-.logo {
-  height: 80px;
-}
-
 /* MAIN */
 .main-wrap {
   background-color: white;
@@ -64,25 +48,6 @@ a:hover {
   flex-direction: row;
   align-items: normal;
   justify-content: left;
-}
-
-.sidebar {
-  background-color: honeydew;
-  flex-shrink: 0;
-  flex-basis: 200px;
-  font-size: 1.2rem;
-  padding-top: 20px;
-}
-
-.sidebar-nav {
-  list-style: none;
-  padding: 0;
-  margin: 15px 15px 15px 20px;
-  text-transform: uppercase;
-}
-.sidebar-nav li {
-  padding: 2px 0;
-  margin-bottom: 2px;
 }
 
 .App-main-content {

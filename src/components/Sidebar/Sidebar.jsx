@@ -1,20 +1,20 @@
-// import "./App.css"
+import Class from "./Sidebar.module.css"
 
 function Sidebar() {
   return (
-    <div className="sidebar">
+    <div className={Class.sidebar}>
       <nav>
-        <ul className="sidebar-nav">
-          <li>
+        <ul className={Class.nav}>
+          <li className={`${Class.li} ${Class.active}`}>
             <a href="/">Profile</a>
           </li>
-          <li>
+          <li className={Class.li}>
             <a href="/">Messages</a>
           </li>
-          <li>
+          <li className={Class.li}>
             <a href="/">News</a>
           </li>
-          <li>
+          <li className={Class.li}>
             <a href="/">Music</a>
           </li>
         </ul>

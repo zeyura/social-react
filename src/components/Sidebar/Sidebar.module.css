@@ -1,0 +1,25 @@
+.sidebar {
+  background-color: honeydew;
+  flex-shrink: 0;
+  flex-basis: 200px;
+  font-size: 1.2rem;
+  padding-top: 20px;
+}
+
+.nav {
+  list-style: none;
+  padding: 0;
+  margin: 15px 15px 15px 20px;
+  text-transform: uppercase;
+}
+.li {
+  padding: 2px 0;
+  margin-bottom: 2px;
+}
+.li a {
+  color: #606163;
+}
+
+.active a {
+  color: rgb(155, 201, 112);
+}

@@ -1,0 +1,16 @@
+/* HEADER */
+.header {
+  background-color: white;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: left;
+  font-size: calc(8px + 3vmin);
+  border-bottom: 1px solid lightgrey;
+}
+
+.logo {
+  height: 77px;
+  transform: translateY(3px);
+}
