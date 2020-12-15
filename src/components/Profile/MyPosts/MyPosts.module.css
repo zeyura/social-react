@@ -1,9 +1,7 @@
-.wrapper {
-}
 .posts {
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 30px;
   list-style: none;
-  padding-left: 0;
+  padding: 20px 20px 20px 30px;
   max-width: 100%;
 }

@@ -1,4 +1,28 @@
-.item {
+.wrapper {
   margin-bottom: 40px;
+}
+
+.messagesContent {
   display: flex;
+  justify-content: space-between;
+}
+
+.messagesContent > div {
+  flex: 1 0;
+}
+
+.dialogsItems {
+}
+
+.dialog {
+}
+
+.dialog .active {
+  color: goldenrod;
+}
+
+.messages {
+}
+
+.message {
 }

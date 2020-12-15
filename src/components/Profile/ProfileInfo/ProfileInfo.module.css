@@ -1,0 +1,15 @@
+.wrapper {
+  margin-bottom: 30px;
+}
+
+.titleImg {
+  margin-bottom: 0;
+}
+
+.addPost {
+  padding: 20px 20px 20px 30px;
+}
+
+.inputText {
+  color: grey;
+}

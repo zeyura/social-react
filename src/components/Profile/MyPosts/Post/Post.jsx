@@ -4,10 +4,7 @@ function Post(props) {
   return (
     <li className={Class.item}>
       <div className={Class.img}>
-        <img
-          src="https://klike.net/uploads/posts/2019-03/1551511784_4.jpg"
-          alt=""
-        />
+        <img src="../img/155.jpg" alt="" />
       </div>
       <div className={Class.content}>
         <h3 className={Class.label}>Post description</h3>

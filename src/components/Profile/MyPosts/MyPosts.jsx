@@ -2,16 +2,18 @@ import Post from "./Post/Post"
 import Class from "./MyPosts.module.css"
 
 function MyPosts() {
-  return (
-    <div className={Class.wrapper}>
-      <h3>MyPosts component</h3>
-      <ul className={Class.posts}>
-        <Post text="Hello!!" likesCount="45" />
-        <Post text="Sam Hullo!!" likesCount="4" />
-        <Post text="Pokedova!" likesCount="125" />
-      </ul>
-    </div>
-  )
+  const posts = [
+    { text: "Hello!!", likesCount: "35" },
+    { text: "Sam Hullo!!", likesCount: "45" },
+    { text: "Poxxxues", likesCount: "345" },
+    { text: "Pokedova!", likesCount: "5" },
+  ]
+
+  let postElems = posts.map((p, i) => (
+    <Post text={p.text} likesCount={p.likesCount} key={i} />
+  ))
+
+  return <ul className={Class.posts}>{postElems}</ul>
 }
 
 export default MyPosts

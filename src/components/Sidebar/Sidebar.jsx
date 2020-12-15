@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 import Class from "./Sidebar.module.css"
 
 function Sidebar() {
@@ -5,17 +6,25 @@ function Sidebar() {
     <div className={Class.sidebar}>
       <nav>
         <ul className={Class.nav}>
-          <li className={`${Class.li} ${Class.active}`}>
-            <a href="/">Profile</a>
+          <li className={Class.li}>
+            <NavLink to="/profile" activeClassName={Class.activeLink}>
+              Profile
+            </NavLink>
           </li>
           <li className={Class.li}>
-            <a href="/">Messages</a>
+            <NavLink to="/dialogs" activeClassName={Class.activeLink}>
+              Messages
+            </NavLink>
           </li>
           <li className={Class.li}>
-            <a href="/">News</a>
+            <NavLink to="/" activeClassName={Class.activeLink}>
+              News
+            </NavLink>
           </li>
           <li className={Class.li}>
-            <a href="/">Music</a>
+            <NavLink to="/" activeClassName={Class.activeLink}>
+              Music
+            </NavLink>
           </li>
         </ul>
       </nav>
