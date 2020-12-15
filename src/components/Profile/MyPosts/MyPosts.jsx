@@ -6,7 +6,9 @@ function MyPosts() {
     <div className={Class.wrapper}>
       <h3>MyPosts component</h3>
       <ul className={Class.posts}>
-        <Post />
+        <Post text="Hello!!" likesCount="45" />
+        <Post text="Sam Hullo!!" likesCount="4" />
+        <Post text="Pokedova!" likesCount="125" />
       </ul>
     </div>
   )

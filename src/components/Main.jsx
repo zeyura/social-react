@@ -1,5 +1,6 @@
 import Sidebar from "./Sidebar/Sidebar"
 import Profile from "./Profile/Profile"
+import Dialogs from "./Dialogs/Dialogs"
 
 function Main() {
   return (
@@ -7,7 +8,8 @@ function Main() {
       <Sidebar />
 
       <main className="App-main-content">
-        <Profile />
+        {/* <Profile /> */}
+        <Dialogs />
       </main>
     </div>
   )
