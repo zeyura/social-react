@@ -1,4 +1,4 @@
-import Class from "./DialogItem.module.css"
+import Class from "../Dialogs.module.css"
 import { NavLink } from "react-router-dom"
 
 const DialogItem = (props) => {

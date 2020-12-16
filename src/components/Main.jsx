@@ -4,15 +4,19 @@ import Dialogs from "./Dialogs/Dialogs"
 
 import { BrowserRouter as Router, Route } from "react-router-dom"
 
-function Main() {
+function Main({ posts, dialogsData, messagesData }) {
   return (
     <Router>
       <div className="main-wrap">
         <Sidebar />
 
         <main className="App-main-content">
-          <Route path="/profile" component={Profile} />
-          <Route path="/dialogs" component={Dialogs} />
+          <Route path="/profile">
+            <Profile posts={posts} />
+          </Route>
+          <Route path="/dialogs">
+            <Dialogs dialogsData={dialogsData} messagesData={messagesData} />
+          </Route>
         </main>
       </div>
     </Router>
