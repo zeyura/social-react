@@ -4,35 +4,15 @@ import "./index.css"
 import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 
-// ----- DATA
-const posts = [
-  { text: "Hello!!", likesCount: "35" },
-  { text: "Sam Hullo!!", likesCount: "45" },
-  { text: "Poxxxues", likesCount: "345" },
-  { text: "Pokedova babanya!", likesCount: "5" },
-]
-
-const dialogsData = [
-  { name: "Gosha", id: "1" },
-  { name: "Masha", id: "2" },
-  { name: "Sveta", id: "3" },
-  { name: "Vasiliy", id: "4" },
-  { name: "Ostapko", id: "5" },
-  { name: "Alexander", id: "6" },
-]
-
-const messagesData = [
-  { message: "Hello!" },
-  { message: "Fucking USA" },
-  { message: "Bellowed users Slippy.." },
-  { message: "Bellowed users Sonnyes Meassures doom..." },
-]
-
-// DATA END
+import state from "./redux/state"
 
 ReactDOM.render(
   <React.StrictMode>
-    <App posts={posts} dialogsData={dialogsData} messagesData={messagesData} />
+    <App
+      posts={state.posts}
+      dialogsData={state.dialogsData}
+      messagesData={state.messagesData}
+    />
   </React.StrictMode>,
   document.getElementById("root")
 )
