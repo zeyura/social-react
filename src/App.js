@@ -3,15 +3,11 @@ import Footer from "./components/Footer"
 import Header from "./components/Header/Header"
 import Main from "./components/Main"
 
-function App({ posts, dialogsData, messagesData }) {
+function App({ state }) {
   return (
     <div className="App">
       <Header />
-      <Main
-        posts={posts}
-        dialogsData={dialogsData}
-        messagesData={messagesData}
-      />
+      <Main state={state} />
       <Footer />
     </div>
   )

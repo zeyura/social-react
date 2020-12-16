@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom"
+import Friends from "./Friends/Friends"
 import Class from "./Sidebar.module.css"
 
 function Sidebar() {
@@ -28,6 +29,8 @@ function Sidebar() {
           </li>
         </ul>
       </nav>
+
+      <Friends />
     </div>
   )
 }

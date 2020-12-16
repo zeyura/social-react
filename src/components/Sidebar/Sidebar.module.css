@@ -23,3 +23,8 @@
 li .activeLink {
   color: rgb(155, 201, 112);
 }
+
+.friends {
+  padding: 20px;
+  background-color: red;
+}
