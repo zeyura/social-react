@@ -4,7 +4,7 @@ function Post(props) {
   return (
     <li className={Class.item}>
       <div className={Class.img}>
-        <img src="../img/155.jpg" alt="" />
+        <img src="../img/155.jpg" alt="avatar" />
       </div>
       <div className={Class.content}>
         <h3 className={Class.label}>Post description</h3>
