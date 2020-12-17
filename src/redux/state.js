@@ -1,6 +1,8 @@
-import { renderEntireTree } from "../render"
+let renderEntireTree = () => {
+  console.log("render Tree")
+}
 
-// ----- DATA
+//
 
 let state = {
   sidebar: {
@@ -63,6 +65,10 @@ export function addPost(post) {
   state.profilePage.posts.push(newPost)
 
   renderEntireTree(state)
+}
+
+export function subscribe(observer) {
+  renderEntireTree = observer
 }
 
 ///
