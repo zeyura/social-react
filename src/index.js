@@ -5,20 +5,20 @@ import "./index.css"
 import App from "./App"
 // import { addPost } from "./redux/state"
 
-import state, { addPost, subscribe } from "./redux/state"
+import store from "./redux/state"
 
-let renderEntireTree = (state) => {
+let renderEntireTree = () => {
   ReactDOM.render(
     <React.StrictMode>
-      <App state={state} addPost={addPost} />
+      <App state={store.getState()} addPost={store.addPost.bind(store)} />
     </React.StrictMode>,
     document.getElementById("root")
   )
 }
 
-renderEntireTree(state)
+renderEntireTree(store.getState())
 
-subscribe(renderEntireTree)
+store.subscribe(renderEntireTree)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
