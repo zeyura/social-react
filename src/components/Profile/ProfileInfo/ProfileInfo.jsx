@@ -8,9 +8,9 @@ function ProfileInfo(props) {
   let newPostText = React.createRef()
 
   const addPost = () => {
-    let title = newPostTitle.current.value
+    //let title = newPostTitle.current.value
     let text = newPostText.current.value
-    console.log(title, text)
+
     props.addPost(text)
   }
 
