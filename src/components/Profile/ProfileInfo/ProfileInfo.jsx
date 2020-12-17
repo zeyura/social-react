@@ -1,7 +1,7 @@
 import Class from "./ProfileInfo.module.css"
 import React from "react"
 
-function ProfileInfo(props) {
+function ProfileInfo({ dispatch }) {
   // Methods
 
   let newPostTitle = React.createRef()
@@ -12,7 +12,10 @@ function ProfileInfo(props) {
     //let title = newPostTitle.current.value
     let text = newPostText.current.value
 
-    props.addPost(text)
+    dispatch({
+      type: "ADD_POST",
+      post: text,
+    })
 
     newPostText.current.value = ""
   }

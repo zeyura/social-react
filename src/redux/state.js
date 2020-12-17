@@ -57,20 +57,23 @@ let store = {
     return this._state
   },
 
-  addPost(post) {
-    let newPost = {
-      id: 5,
-      text: post,
-      likesCount: 0,
-    }
-
-    this._state.profilePage.posts.push(newPost)
-
-    this._callSubscriber(this._state)
-  },
-
   subscribe(observer) {
     this._callSubscriber = observer
+  },
+
+  dispatch(action) {
+    if (action.type === "ADD_POST") {
+      let newPost = {
+        id: 5,
+        text: action.post,
+        likesCount: 0,
+      }
+
+      this._state.profilePage.posts.push(newPost)
+
+      this._callSubscriber(this._state)
+    } else {
+    }
   },
 }
 
