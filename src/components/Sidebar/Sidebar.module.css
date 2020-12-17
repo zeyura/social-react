@@ -25,6 +25,45 @@ li .activeLink {
 }
 
 .friends {
-  padding: 20px;
-  background-color: red;
+  position: fixed;
+  bottom: 67px;
+  left: 0px;
+  width: 190px;
+  list-style: none;
+  padding: 5px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.friendItem {
+  opacity: 0.9;
+  transition: 0.1s;
+  margin: 5px 4px 10px 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 54px;
+  text-align: center;
+}
+
+.friendItem:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.friendItem img {
+  transition: 0.1s;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 50px;
+}
+
+.friendItem:hover img {
+  transform: scale(1.05);
+}
+
+.name {
+  font-size: 12px;
 }

@@ -7,7 +7,7 @@ function Dialogs({ data }) {
     <DialogItem key={d.id} name={d.name} id={d.id} />
   ))
   const messagesElems = data.messagesData.map((m, i) => (
-    <Message key={i} message={m.message} />
+    <Message key={i} data={m} />
   ))
 
   ///////////

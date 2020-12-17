@@ -73,6 +73,29 @@ img {
   padding: 20px 20px 20px 30px;
 }
 
+/* Messages */
+.selfMessage {
+  justify-content: flex-end !important;
+}
+.selfMessage > div {
+  flex-direction: row-reverse;
+}
+.selfMessage > div img {
+  margin-right: 10px;
+  margin-left: 15px;
+}
+.selfMessage > div > div {
+  border-radius: 8px 0 6px 8px;
+  background-color: rgb(98, 165, 241);
+  color: rgb(239, 242, 245);
+}
+.selfMessage > div > div::before {
+  left: auto;
+  right: -5px;
+  transform: rotate(-135deg);
+  border-left-color: rgb(98, 165, 241);
+}
+
 /* FOOTER */
 .App-footer {
   flex-shrink: 0;

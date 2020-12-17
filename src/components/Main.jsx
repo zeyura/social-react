@@ -8,7 +8,7 @@ function Main({ state }) {
   return (
     <Router>
       <div className="main-wrap">
-        <Sidebar />
+        <Sidebar data={state.sidebar} />
 
         <main className="App-main-content">
           <Route path="/profile">

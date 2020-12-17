@@ -3,22 +3,74 @@
 }
 
 .messagesContent {
+  font-size: 0.95rem;
   display: flex;
   justify-content: space-between;
 }
 
 .messagesContent > div {
-  flex: 1 0;
 }
 
 .dialogs {
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  margin-right: 30px;
+  border-right: 1px solid rgb(199, 192, 192);
+  width: 40%;
 }
 
 .dialog {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
 }
 
 .messages {
+  padding-top: 10px;
+  padding-right: 0px;
+  padding-bottom: 20px;
+  width: 60%;
 }
 
 .message {
+  display: flex;
+  justify-content: flex-start;
+  align-items: normal;
+}
+
+.message img {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin-right: 15px;
+  transform: translateY(-2px);
+}
+
+.messageWrap {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.messageWrap > div {
+  width: 75%;
+}
+
+.text {
+  position: relative;
+  padding: 5px 10px 8px 12px;
+  border-radius: 0 8px 8px 6px;
+  background-color: rgb(240, 240, 240);
+}
+
+.text::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -7px;
+  height: 0;
+  width: 0;
+  border: 8px solid transparent;
+  border-left-color: rgb(240, 240, 240);
+  transform: rotate(-45deg);
 }

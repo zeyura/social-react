@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 import Friends from "./Friends/Friends"
 import Class from "./Sidebar.module.css"
 
-function Sidebar() {
+function Sidebar({ data }) {
   return (
     <div className={Class.sidebar}>
       <nav>
@@ -30,7 +30,7 @@ function Sidebar() {
         </ul>
       </nav>
 
-      <Friends />
+      <Friends data={data.friends} />
     </div>
   )
 }
