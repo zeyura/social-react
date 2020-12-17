@@ -4,7 +4,7 @@ import Dialogs from "./Dialogs/Dialogs"
 
 import { BrowserRouter as Router, Route } from "react-router-dom"
 
-function Main({ state }) {
+function Main({ state, addPost }) {
   return (
     <Router>
       <div className="main-wrap">
@@ -12,7 +12,7 @@ function Main({ state }) {
 
         <main className="App-main-content">
           <Route path="/profile">
-            <Profile data={state.profilePage} />
+            <Profile data={state.profilePage} addPost={addPost} />
           </Route>
           <Route path="/dialogs">
             <Dialogs data={state.messagesPage} />

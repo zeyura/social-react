@@ -1,6 +1,20 @@
 import Class from "./ProfileInfo.module.css"
+import React from "react"
 
-function ProfileInfo() {
+function ProfileInfo(props) {
+  // Methods
+
+  let newPostTitle = React.createRef()
+  let newPostText = React.createRef()
+
+  const addPost = () => {
+    let title = newPostTitle.current.value
+    let text = newPostText.current.value
+    console.log(title, text)
+    props.addPost(text)
+  }
+
+  /////////////////////
   return (
     <div className={Class.wrapper}>
       <img
@@ -12,12 +26,19 @@ function ProfileInfo() {
         <h3>Input New Post:</h3>
         <form>
           <div className="inputField">
-            <input className={Class.inputText} type="text" />
+            <input ref={newPostTitle} className={Class.inputText} type="text" />
           </div>
           <div className="inputField">
-            <textarea className={Class.inputText} cols="50" rows="5"></textarea>
+            <textarea
+              ref={newPostText}
+              className={Class.inputText}
+              cols="50"
+              rows="5"
+            ></textarea>
           </div>
-          <button type="submit">Create Post</button>
+          <button type="button" onClick={addPost}>
+            Add Post
+          </button>
         </form>
       </div>
     </div>

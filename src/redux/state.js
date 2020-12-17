@@ -13,10 +13,10 @@ let state = {
 
   profilePage: {
     posts: [
-      { text: "Hello!!", likesCount: "35" },
-      { text: "Sam Hullo!!", likesCount: "45" },
-      { text: "Poxxxues", likesCount: "345" },
-      { text: "Pokedova babanya!", likesCount: "5" },
+      { id: 1, text: "Hello!!", likesCount: "35" },
+      { id: 2, text: "Sam Hullo!!", likesCount: "45" },
+      { id: 3, text: "Poxxxues", likesCount: "345" },
+      { id: 4, text: "Pokedova babanya!", likesCount: "5" },
     ],
   },
 
@@ -49,7 +49,17 @@ let state = {
     ],
   },
 }
-
 // State END
 
+export function addPost(post) {
+  let newPost = {
+    id: 5,
+    text: post,
+    likesCount: 0,
+  }
+
+  state.profilePage.posts.push(newPost)
+}
+
+///
 export default state
