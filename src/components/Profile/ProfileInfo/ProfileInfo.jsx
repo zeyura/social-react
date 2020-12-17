@@ -7,14 +7,18 @@ function ProfileInfo(props) {
   let newPostTitle = React.createRef()
   let newPostText = React.createRef()
 
+  // ADDPOST
   const addPost = () => {
     //let title = newPostTitle.current.value
     let text = newPostText.current.value
 
     props.addPost(text)
+
+    newPostText.current.value = ""
   }
 
   /////////////////////
+
   return (
     <div className={Class.wrapper}>
       <img
@@ -34,7 +38,7 @@ function ProfileInfo(props) {
               className={Class.inputText}
               cols="50"
               rows="5"
-            ></textarea>
+            />
           </div>
           <button type="button" onClick={addPost}>
             Add Post
