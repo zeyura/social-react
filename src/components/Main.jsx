@@ -15,7 +15,7 @@ function Main({ state, dispatch }) {
             <Profile data={state.profilePage} dispatch={dispatch} />
           </Route>
           <Route path="/dialogs">
-            <Dialogs data={state.messagesPage} />
+            <Dialogs data={state.messagesPage} dispatch={dispatch} />
           </Route>
         </main>
       </div>

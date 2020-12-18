@@ -1,3 +1,7 @@
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
+import sidebarReducer from "./sidebarReducer";
+
 let store = {
   _state: {
     sidebar: {
@@ -16,6 +20,11 @@ let store = {
         { id: 2, text: "Sam Hullo!!", likesCount: "45" },
         { id: 3, text: "Poxxxues", likesCount: "345" },
         { id: 4, text: "Pokedova babanya!", likesCount: "5" },
+        {
+          id: 5,
+          text: "Pokedova sasiska malaya!! Pokedova sasiska -> malaya--",
+          likesCount: "15",
+        },
       ],
     },
 
@@ -46,6 +55,8 @@ let store = {
           url: "129",
         },
       ],
+
+      newMessageBody: ">",
     },
   },
 
@@ -62,20 +73,12 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === "ADD_POST") {
-      let newPost = {
-        id: 5,
-        text: action.post,
-        likesCount: 0,
-      }
-
-      this._state.profilePage.posts.push(newPost)
-
-      this._callSubscriber(this._state)
-    } else {
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action)
+    this._state.messagesPage = dialogsReducer(this._state.messagesPage, action)
+    this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+    
+    this._callSubscriber(this._state)
   },
 }
 
-///
 export default store

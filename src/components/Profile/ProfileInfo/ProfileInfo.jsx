@@ -1,5 +1,6 @@
 import Class from "./ProfileInfo.module.css"
 import React from "react"
+import { addPostCreator } from "../../../redux/profileReducer"
 
 function ProfileInfo({ dispatch }) {
   // Methods
@@ -12,10 +13,7 @@ function ProfileInfo({ dispatch }) {
     //let title = newPostTitle.current.value
     let text = newPostText.current.value
 
-    dispatch({
-      type: "ADD_POST",
-      post: text,
-    })
+    dispatch(addPostCreator(text))
 
     newPostText.current.value = ""
   }
