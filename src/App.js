@@ -7,7 +7,10 @@ function App({ state, dispatch }) {
   return (
     <div className="App">
       <Header />
-      <Main state={state} dispatch={dispatch} />
+      <Main 
+        state={state} 
+        dispatch={dispatch}
+      />
       <Footer />
     </div>
   )

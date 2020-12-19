@@ -5,7 +5,7 @@ import "./index.css"
 import App from "./App"
 // import { addPost } from "./redux/state"
 
-import store from "./redux/state"
+import store from "./redux/redux-store"
 
 let renderEntireTree = () => {
   ReactDOM.render(
