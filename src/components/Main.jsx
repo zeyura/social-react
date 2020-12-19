@@ -1,6 +1,6 @@
 import Sidebar from "./Sidebar/Sidebar"
 import Profile from "./Profile/Profile"
-import Dialogs from "./Dialogs/Dialogs"
+import DialogsContainer from "./Dialogs/DialogsContainer"
 
 import { BrowserRouter as Router, Route } from "react-router-dom"
 
@@ -15,7 +15,7 @@ function Main({ state, dispatch }) {
             <Profile data={state.profilePage} dispatch={dispatch} />
           </Route>
           <Route path="/dialogs">
-            <Dialogs data={state.messagesPage} dispatch={dispatch} />
+            <DialogsContainer data={state.messagesPage} dispatch={dispatch} />
           </Route>
         </main>
       </div>

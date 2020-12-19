@@ -3,9 +3,10 @@ import DialogItem from "./DialogItem/DialogItem"
 import Message from "./Message/Message"
 
 import React from "react"
-import { updateNewMessageCreator, sendMessageCreator } from "../../redux/dialogsReducer"
+//import { updateNewMessageCreator, sendMessageCreator } from "../../redux/dialogsReducer"
 
-function Dialogs({ data, dispatch }) {
+function Dialogs({ data, updateNewMessage, sendMessage }) {
+
   const dialogsElems = data.dialogsData.map((d) => (
     <DialogItem key={d.id} name={d.name} id={d.id} />
   ))
@@ -13,18 +14,19 @@ function Dialogs({ data, dispatch }) {
     <Message key={i} data={m} />
   ))
   let newMessageValue = data.newMessageBody
-
+  
   ///////////
 
   let newMessageText = React.createRef()
 
+///////
   const changeNewMessage = (e) => {
     let body = e.target.value
-    dispatch(updateNewMessageCreator(body))
+    updateNewMessage(body)
   }
 
   const addMessage = () => {
-    if (newMessageText.current.value) dispatch(sendMessageCreator())
+    if (newMessageText.current.value) sendMessage()
   }
 
   return (

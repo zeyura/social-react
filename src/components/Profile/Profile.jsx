@@ -3,6 +3,7 @@ import MyPosts from "./MyPosts/MyPosts"
 import Class from "./Profile.module.css"
 
 function Profile({ data, dispatch }) {
+  
   return (
     <div className={Class.wrapper}>
       <ProfileInfo dispatch={dispatch} />

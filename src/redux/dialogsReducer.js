@@ -29,7 +29,7 @@ let initialState = {
       },
     ],
 
-    newMessageBody: ">",
+    newMessageBody: ">>",
   }
 
 const dialogsReducer = (state = initialState, action) => {
