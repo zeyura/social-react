@@ -1,6 +1,20 @@
 const ADD_POST = "ADD_POST"
 
-const profileReducer = (state, action) => {
+let initialState = {
+    posts: [
+        { id: 1, text: "Hello!!", likesCount: "35" },
+        { id: 2, text: "Sam Hullo!!", likesCount: "45" },
+        { id: 3, text: "Poxxxues", likesCount: "345" },
+        { id: 4, text: "Pokedova babanya!", likesCount: "5" },
+        {
+          id: 5,
+          text: "Pokedova sasiska malaya!! Pokedova sasiska -> malaya--",
+          likesCount: "15",
+        },
+      ]
+}
+
+const profileReducer = (state = initialState, action) => {
     
     switch (action.type) {
         case ADD_POST:
