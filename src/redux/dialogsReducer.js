@@ -30,31 +30,31 @@ let initialState = {
     ],
 
     newMessageBody: ">>",
-  }
+}
 
 const dialogsReducer = (state = initialState, action) => {
 
-    switch (action.type) {
-        case UPDATE_NEW_MESSAGE_BODY:
-            state.newMessageBody = action.body
-            return state
-    
-        case SEND_MESSAGE:
-            let body = state.newMessageBody
-            ////if (!body) return
-            state.newMessageBody = ""
-    
-            state.messagesData.push({
-            id: "8",
-            message: body,
-            self: true,
-            url: "155",
-            })
-            return state
+  switch (action.type) {
+    case UPDATE_NEW_MESSAGE_BODY:
+        state.newMessageBody = action.body
+        return state
 
-        default:
-            return state
-    }
+    case SEND_MESSAGE:
+        let body = state.newMessageBody
+        ////if (!body) return
+        state.newMessageBody = ""
+
+        state.messagesData.push({
+        id: "8",
+        message: body,
+        self: true,
+        url: "155",
+        })
+        return state
+
+    default:
+        return state
+  }  
 
 }
 

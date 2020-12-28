@@ -19,7 +19,7 @@ function Dialogs({ data, updateNewMessage, sendMessage }) {
 
   let newMessageText = React.createRef()
 
-///////
+  ///////
   const changeNewMessage = (e) => {
     let body = e.target.value
     updateNewMessage(body)
