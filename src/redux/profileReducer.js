@@ -1,42 +1,39 @@
-const ADD_POST = "ADD_POST"
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
 let initialState = {
     posts: [
-        { id: 1, text: "Hello!!", likesCount: "35" },
-        { id: 2, text: "Sam Hullo!!", likesCount: "45" },
-        { id: 3, text: "Poxxxues", likesCount: "345" },
-        { id: 4, text: "Pokedova babanya!", likesCount: "5" },
-        {
-          id: 5,
-          text: "Pokedova sasiska malaya!! Pokedova sasiska -> malaya--",
-          likesCount: "15",
-        },
-      ]
-}
+        {id: 1, message: 'Hi, how are you?', likesCount: 12},
+        {id: 2, message: 'It\'s my first post', likesCount: 11},
+        {id: 3, message: 'Blabla', likesCount: 11},
+        {id: 4, message: 'Dada', likesCount: 11}
+    ],
+    newPostText: '>>'
+};
 
 const profileReducer = (state = initialState, action) => {
-    
-    switch (action.type) {
+
+    switch(action.type) {
         case ADD_POST:
             let newPost = {
                 id: 5,
-                text: action.post,
-                likesCount: 0,
-            }
-            state.posts.push(newPost)
-            return state
+                message: state.newPostText,
+                likesCount: 0
+            };
+            state.posts.push(newPost);
+            state.newPostText = '';
+            return state;
+        case UPDATE_NEW_POST_TEXT:
+            state.newPostText = action.newText;
+            return state;
         default:
-            return state
-    }
-
-}
-
-export const addPostCreator = (text) => {
-    return {
-      type: ADD_POST,
-      post: text,
+            return state;
     }
 }
 
 
-export default profileReducer
+export const addPostActionCreator = () => ({type: ADD_POST})
+export const updateNewPostTextActionCreator = (text) =>
+    ({type: UPDATE_NEW_POST_TEXT, newText: text })
+
+export default profileReducer;

@@ -1,20 +1,16 @@
-import Class from "./Post.module.css"
+import React from 'react';
+import s from './Post.module.css';
 
-function Post(props) {
+const Post = (props) => {
   return (
-    <li className={Class.item}>
-      <div className={Class.img}>
-        <img src="../img/155.jpg" alt="avatar" />
+    <div className={s.item}>
+      <img src='https://movies4maniacs.liberty.me/wp-content/uploads/sites/1218/2015/09/avatarsucks.jpg' />
+        { props.message }
+          <div>
+        <span>like</span> { props.likesCount }
       </div>
-      <div className={Class.content}>
-        <h3 className={Class.label}>Post description</h3>
-        <div className={Class.text}>
-          <p>{props.text}</p>
-          <p>Likes: {props.likesCount}</p>
-        </div>
-      </div>
-    </li>
+    </div>
   )
 }
 
-export default Post
+export default Post;

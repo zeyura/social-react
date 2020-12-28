@@ -1,4 +1,4 @@
-import Sidebar from "./Sidebar/Sidebar"
+import Sidebar from "./Navbar/Navbar"
 import Profile from "./Profile/Profile"
 import DialogsContainer from "./Dialogs/DialogsContainer"
 

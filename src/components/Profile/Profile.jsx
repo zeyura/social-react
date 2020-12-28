@@ -1,15 +1,14 @@
-import ProfileInfo from "./ProfileInfo/ProfileInfo"
-import MyPosts from "./MyPosts/MyPosts"
-import Class from "./Profile.module.css"
+import React from 'react';
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-function Profile({ data, dispatch }) {
-  
-  return (
-    <div className={Class.wrapper}>
-      <ProfileInfo dispatch={dispatch} />
-      <MyPosts posts={data.posts} />
-    </div>
-  )
+const Profile = () => {
+    return (
+        <div>
+            <ProfileInfo />
+            <MyPostsContainer />
+        </div>
+    )
 }
 
-export default Profile
+export default Profile;

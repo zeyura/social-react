@@ -1,53 +1,18 @@
-import Class from "./ProfileInfo.module.css"
-import React from "react"
-import { addPostCreator } from "../../../redux/profileReducer"
+import React from 'react';
+import s from './ProfileInfo.module.css';
 
-function ProfileInfo({ dispatch }) {
-  // Methods
-
-  let newPostTitle = React.createRef()
-  let newPostText = React.createRef()
-
-  // ADDPOST
-  const addPost = () => {
-    //let title = newPostTitle.current.value
-    let text = newPostText.current.value
-
-    dispatch(addPostCreator(text))
-
-    newPostText.current.value = ""
-  }
-
-  /////////////////////
-
-  return (
-    <div className={Class.wrapper}>
-      <img
-        src="https://img.tsn.ua/cached/1533908292/tsn-8c5f6b23d1211bb14030cc3abd4583f7/thumbs/1340x530/bf/74/1d750cdae19c5075e0123ec455ee74bf.jpeg"
-        alt=""
-        className={Class.titleImg}
-      />
-      <div className={Class.addPost}>
-        <h3>Input New Post:</h3>
-        <form>
-          <div className="inputField">
-            <input ref={newPostTitle} className={Class.inputText} type="text" />
-          </div>
-          <div className="inputField">
-            <textarea
-              ref={newPostText}
-              className={Class.inputText}
-              cols="50"
-              rows="5"
-            />
-          </div>
-          <button type="button" onClick={addPost}>
-            Add Post
-          </button>
-        </form>
-      </div>
-    </div>
-  )
+const ProfileInfo = () => {
+    return (
+        <div>
+            <div>
+                <img
+                    src='https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&h=350'/>
+            </div>
+            <div className={s.descriptionBlock}>
+                ava + description
+            </div>
+        </div>
+    )
 }
 
-export default ProfileInfo
+export default ProfileInfo;

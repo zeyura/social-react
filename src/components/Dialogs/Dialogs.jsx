@@ -1,66 +1,41 @@
-import Class from "./Dialogs.module.css"
-import DialogItem from "./DialogItem/DialogItem"
-import Message from "./Message/Message"
+import React from 'react';
+import s from './Dialogs.module.css';
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
 
-import React from "react"
-//import { updateNewMessageCreator, sendMessageCreator } from "../../redux/dialogsReducer"
+const Dialogs = (props) => {
 
-function Dialogs({ data, updateNewMessage, sendMessage }) {
+    let state = props.dialogsPage;
 
-  const dialogsElems = data.dialogsData.map((d) => (
-    <DialogItem key={d.id} name={d.name} id={d.id} />
-  ))
-  const messagesElems = data.messagesData.map((m, i) => (
-    <Message key={i} data={m} />
-  ))
-  let newMessageValue = data.newMessageBody
-  
-  ///////////
+    let dialogsElements = state.dialogs.map( d => <DialogItem name={d.name} id={d.id} />  );
+    let messagesElements = state.messages.map( m => <Message message={m.message} /> );
+    let newMessageBody = state.newMessageBody;
 
-  let newMessageText = React.createRef()
+    let onSendMessageClick = () => {
+        props.sendMessage();
+    }
 
-  ///////
-  const changeNewMessage = (e) => {
-    let body = e.target.value
-    updateNewMessage(body)
-  }
+    let onNewMessageChange = (e) => {
+        let body = e.target.value;
+        props.updateNewMessageBody(body);
+    }
 
-  const addMessage = () => {
-    if (newMessageText.current.value) sendMessage()
-  }
-
-  return (
-    <div className={Class.wrapper}>
-      <h1>Messages</h1>
-
-      <div className={Class.messagesContent}>
-        <div className={Class.dialogs}>{dialogsElems}</div>
-        <div className={Class.messages}>
-          <div>{messagesElems}</div>
-          <div>
-            <div className={Class.addPost}>
-              <h3>---</h3>
-              <form>
-                <div className="inputField">
-                  <textarea
-                    value={newMessageValue}
-                    ref={newMessageText}
-                    onChange={changeNewMessage}
-                    className={Class.inputText}
-                    cols="50"
-                    rows="2"
-                  />
-                </div>
-                <button type="button" onClick={addMessage}>
-                  Add Message
-                </button>
-              </form>
+    return (
+        <div className={s.dialogs}>
+            <div className={s.dialogsItems}>
+                { dialogsElements }
             </div>
-          </div>
+            <div className={s.messages}>
+                <div>{ messagesElements }</div>
+                <div>
+                    <div><textarea value={newMessageBody}
+                                   onChange={onNewMessageChange}
+                                   placeholder='Enter your message'></textarea></div>
+                    <div><button onClick={onSendMessageClick}>Send</button></div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  )
+    )
 }
 
-export default Dialogs
+export default Dialogs;
