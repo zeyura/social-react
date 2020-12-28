@@ -8,7 +8,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = () => {
   return (
-    <div className='app-wrapper'>
+    <div className='App'>
         <Header />
         <Navbar />
         <div className='app-wrapper-content'>

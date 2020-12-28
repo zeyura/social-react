@@ -8,7 +8,7 @@ let initialState = {
         {id: 3, message: 'Blabla', likesCount: 11},
         {id: 4, message: 'Dada', likesCount: 11}
     ],
-    newPostText: '>>'
+    newPostText: '_'
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -24,7 +24,9 @@ const profileReducer = (state = initialState, action) => {
             state.newPostText = '';
             return state;
         case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText;
+            
+            let t = action.newText
+            state.newPostText = t
             return state;
         default:
             return state;

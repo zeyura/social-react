@@ -3,6 +3,10 @@
   display: flex;
 }
 
+.item img {
+  max-width: 100px;
+}
+
 .img {
   margin-right: 25px;
 }

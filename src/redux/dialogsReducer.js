@@ -17,7 +17,7 @@ let initialState = {
         {id: 4, message: 'Yo'},
         {id: 5, message: 'Yo'}
     ],
-    newMessageBody: ""
+    newMessageBody: ">>"
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -27,7 +27,7 @@ const dialogsReducer = (state = initialState, action) => {
            return state;
        case SEND_MESSAGE:
            let body = state.newMessageBody;
-           state.newMessageBody = '';
+           state.newMessageBody = '>>';
            state.messages.push({id: 6, message: body});
            return state;
        default:
