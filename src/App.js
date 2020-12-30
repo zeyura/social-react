@@ -4,7 +4,8 @@ import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import {Route} from "react-router-dom";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import DialogsContainer from "./components/Dialogs/DialogsContainer"
+import Users from "./components/Users/Users"
 
 const App = () => {
   return (
@@ -17,6 +18,9 @@ const App = () => {
 
             <Route path='/profile'
               render={ () => <Profile /> }/>
+
+            <Route path='/users'
+              render={ () => <Users /> }/>  
         </div>
     </div>
 )    
