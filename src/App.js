@@ -23,7 +23,7 @@ const App = () => {
               render={ () => <Users /> }/>  
         </div>
     </div>
-  ) 
+) 
 }
 
 export default App;
