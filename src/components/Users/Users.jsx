@@ -5,11 +5,8 @@ import s from './Users.module.css'
 
 class Users extends React.Component {
 
-    // constructor(props) {
-    //     super(props)
-    // }
-
-    getUsers = () => {
+    constructor(props) {
+        super(props)
 
         if(!this.props.users.length) {
 
@@ -20,14 +17,11 @@ class Users extends React.Component {
             )
     
         }
-
     }
 
     render() {
 
         return <div>
-
-            <button onClick={this.getUsers}>Get Users</button>
 
             {
         
@@ -62,7 +56,7 @@ class Users extends React.Component {
                     </div>
                 )
 
-            })
+                })
 
             }
 
