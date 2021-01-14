@@ -3,4 +3,20 @@
 }
 .usersPhoto {
   max-width: 100px ;
+  border-radius: 50%;
+}
+
+.paginator {
+  margin: 20px 5px;
+  text-align: center;
+}
+.paginator > span {
+  margin: 0 4px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+.paginator > span.selected {
+  color: blue;
+  background-color: azure;
+  cursor: default;
 }
