@@ -3,35 +3,31 @@ import React from 'react'
 import s from './Users.module.css'
 
 
-class Users extends React.Component {
+let Users = (props) => {
 
-    // constructor(props) {
-    //     super(props)
-    // }
+    let getUsers = () => {
 
-    getUsers = () => {
-
-        if(!this.props.users.length) {
+        if(!props.users.length) {
 
             axios.get('https://social-network.samuraijs.com/api/1.0/users').then(
                 response => {
-                    this.props.setUsers(response.data.items)
+                     props.setUsers(response.data.items)
                 }
             )
     
         }
 
     }
+    
 
-    render() {
+    return (
+        <div>
 
-        return <div>
+<button onClick={getUsers}>Get Users</button>
 
-            <button onClick={this.getUsers}>Get Users</button>
-
-            {
+        {
         
-                this.props.users.map(user => {
+            props.users.map(user => {
                 return (
                     <div className={s.userItem} key={user.id}>
                         <div className={s.left}>
@@ -45,8 +41,8 @@ class Users extends React.Component {
                             </div>
                             {
                                 user.followed 
-                                ? <button onClick={(e) => this.props.unfollow(user.id,e)}>Unfollow</button> 
-                                : <button onClick={() => this.props.follow(user.id)}>Follow</button>
+                                ? <button onClick={(e) => props.unfollow(user.id,e)}>Unfollow</button> 
+                                : <button onClick={() => props.follow(user.id)}>Follow</button>
                             }
                             
                         </div>
@@ -64,13 +60,11 @@ class Users extends React.Component {
 
             })
 
-            }
+        }
 
         </div>
-
-    }
-
+        
+    )
 }
-
 
 export default Users
