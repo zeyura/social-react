@@ -15,32 +15,14 @@ let mapStateToProps = (state) => {
   }
 }
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    follow: (userId) => {
-      dispatch(followAC(userId))
-    },
-    unfollow: (userId) => {
-      dispatch(unfollowAC(userId))
-    },
-    setUsers: (users) => {
-      dispatch(setUsersAC(users))
-    },
 
-    setCurrentPage: (currentPage) => {
-      dispatch(currentPageAC(currentPage))
-    },
-    setTotalUsersCount: (totalCount) => {
-      dispatch(totalUsersCountAC(totalCount))
-    },
-
-    toggleLoader: (loading) => {
-      dispatch(loaderAC(loading))
-    }
-
-  }
-}
-
-let UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users)
+let UsersContainer = connect(mapStateToProps, {
+  follow: followAC,
+  unfollow: unfollowAC,
+  setUsers: setUsersAC,
+  setCurrentPage: currentPageAC,
+  setTotalUsersCount: totalUsersCountAC,
+  toggleLoader: loaderAC
+})(Users)
 
 export default UsersContainer
