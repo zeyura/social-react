@@ -1,5 +1,5 @@
 import React from 'react'
-import {followAC, unfollowAC, setUsersAC, currentPageAC, totalUsersCountAC, loaderAC} from "../../redux/usersReducer"
+import {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleLoader} from "../../redux/usersReducer"
 import Users from "./Users"
 import { connect } from 'react-redux'
 
@@ -17,12 +17,12 @@ let mapStateToProps = (state) => {
 
 
 let UsersContainer = connect(mapStateToProps, {
-  follow: followAC,
-  unfollow: unfollowAC,
-  setUsers: setUsersAC,
-  setCurrentPage: currentPageAC,
-  setTotalUsersCount: totalUsersCountAC,
-  toggleLoader: loaderAC
+  follow,
+  unfollow,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  toggleLoader
 })(Users)
 
 export default UsersContainer
