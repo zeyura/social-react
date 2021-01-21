@@ -26,3 +26,12 @@
   opacity: .5;
   cursor: default;
 }
+
+.loader {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.loader img {
+  max-width: 100px;
+}

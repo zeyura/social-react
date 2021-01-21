@@ -1,5 +1,5 @@
 import React from 'react'
-import {followAC, unfollowAC, setUsersAC, currentPageAC, totalUsersCountAC} from "../../redux/usersReducer"
+import {followAC, unfollowAC, setUsersAC, currentPageAC, totalUsersCountAC, loaderAC} from "../../redux/usersReducer"
 import Users from "./Users"
 import { connect } from 'react-redux'
 
@@ -10,7 +10,8 @@ let mapStateToProps = (state) => {
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
-    siblingsCount: state.usersPage.siblingsCount
+    siblingsCount: state.usersPage.siblingsCount,
+    isLoading: state.usersPage.isLoading
   }
 }
 
@@ -33,7 +34,9 @@ let mapDispatchToProps = (dispatch) => {
       dispatch(totalUsersCountAC(totalCount))
     },
 
-    
+    toggleLoader: (loading) => {
+      dispatch(loaderAC(loading))
+    }
 
   }
 }

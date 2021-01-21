@@ -5,6 +5,8 @@ const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 
+const SET_LOADER = 'SET_LOADER'
+
 
 let initialState = {
     users: [],
@@ -12,7 +14,7 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     siblingsCount: 2, // колво  соседних показаних страниц..
-
+    isLoading: false
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -53,6 +55,11 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 totalUsersCount: action.totalUsersCount      
+            }
+        case SET_LOADER:
+            return {
+                ...state, 
+                isLoading: action.loader    
             }    
 
         default:
@@ -67,6 +74,9 @@ export const setUsersAC = (users)  => ({type: SET_USERS, users})
 
 export const currentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 export const totalUsersCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount})
+
+export const loaderAC  = (loader) => ({type: SET_LOADER, loader})
+
 
 
 export default usersReducer

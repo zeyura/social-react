@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React from 'react'
+import Preloader from '../common/Preloader'
 import s from './Users.module.css'
 
 
@@ -13,11 +14,14 @@ class Users extends React.Component {
     componentDidMount() {
 
         if(!this.props.users.length) {
+            this.props.toggleLoader(true)
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(
                 response => {
                     this.props.setUsers(response.data.items);
                     this.props.setTotalUsersCount(response.data.totalCount);
+
+                    this.props.toggleLoader(false)
                 }
             )
         }
@@ -27,10 +31,12 @@ class Users extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber)
 
+            this.props.toggleLoader(true)
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
             .then(
                 response => {
                     this.props.setUsers(response.data.items)
+                    this.props.toggleLoader(false)
                 }
             )
     }
@@ -38,10 +44,13 @@ class Users extends React.Component {
     onPageFirst = () => {
         this.props.setCurrentPage(1)
 
+             this.props.toggleLoader(true)
+
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=1&count=${this.props.pageSize}`)
             .then(
                 response => {
                     this.props.setUsers(response.data.items)
+                    this.props.toggleLoader(false)
                 }
             )
     }
@@ -51,10 +60,12 @@ class Users extends React.Component {
         if(pageNumber < 1) return
         this.props.setCurrentPage(pageNumber)
 
+            this.props.toggleLoader(true)
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
             .then(
                 response => {
                     this.props.setUsers(response.data.items)
+                    this.props.toggleLoader(false)
                 }
             )
     }
@@ -65,10 +76,12 @@ class Users extends React.Component {
         if(pageNumber > pagesCount) return
         this.props.setCurrentPage(pageNumber)
 
+            this.props.toggleLoader(true)
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
             .then(
                 response => {
                     this.props.setUsers(response.data.items)
+                    this.props.toggleLoader(false)
                 }
             )
     }
@@ -77,10 +90,12 @@ class Users extends React.Component {
         let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
         this.props.setCurrentPage(pagesCount)
 
+            this.props.toggleLoader(true)
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pagesCount}&count=${this.props.pageSize}`)
             .then(
                 response => {
                     this.props.setUsers(response.data.items)
+                    this.props.toggleLoader(false)
                 }
             )
     }
@@ -88,6 +103,7 @@ class Users extends React.Component {
     //////////////////////////
 
     render() {
+
 
         let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
 
@@ -113,7 +129,15 @@ class Users extends React.Component {
                 }
         }
         
-        return <div>
+        return <>
+           
+            {
+              this.props.isLoading ?
+              (  <div className={s.loader}>
+                  <Preloader />
+                  </div> ) :
+              null
+            }
 
             <div className={s.paginator}>
                 {
@@ -126,6 +150,7 @@ class Users extends React.Component {
                   ( <span onClick={ this.onPagePrev }> &lt; </span> ) :
                   ( <span className={ s.passive }> &lt; </span> )
                 }
+
                 {           
                     pages.map(p => {
                         if(p <= siblings || p > pagesCount - siblings || 
@@ -201,8 +226,8 @@ class Users extends React.Component {
 
             }
 
-        </div>
-
+        </>
+    
     }
 
 }
