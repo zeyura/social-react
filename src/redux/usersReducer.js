@@ -8,9 +8,10 @@ const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 
 let initialState = {
     users: [],
-    pageSize: 100,
+    pageSize: 20,
     totalUsersCount: 0,
     currentPage: 1,
+    siblingsCount: 2, // колво  соседних показаних страниц..
 
 };
 

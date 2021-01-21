@@ -9,6 +9,7 @@
 .paginator {
   margin: 20px 5px;
   text-align: center;
+  font-size: 18px;
 }
 .paginator > span {
   margin: 0 4px;
@@ -18,5 +19,10 @@
 .paginator > span.selected {
   color: blue;
   background-color: azure;
+  cursor: default;
+}
+
+.paginator .passive {
+  opacity: .5;
   cursor: default;
 }
