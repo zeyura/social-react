@@ -13,3 +13,12 @@
 .inputText {
   color: grey;
 }
+
+
+.preloaderDiv {
+  height: auto;
+}
+
+.preloaderDiv img {
+  max-width: 100px;
+}

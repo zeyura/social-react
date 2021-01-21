@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React from 'react'
+import {NavLink} from "react-router-dom";
 import Preloader from '../common/Preloader'
 import s from './Users.module.css'
 
@@ -196,12 +197,16 @@ class Users extends React.Component {
                     <div className={s.userItem} key={user.id}>
                         <div className={s.left}>
                             <div className='img'>
+
+                                <NavLink to={'/profile/' + user.id}>
                                 <img src={ user.photos.small !== null  
                                         ? user.photos.small 
                                         : '/img/155.jpg' 
                                         } 
                                     className={s.usersPhoto} 
                                 />
+                                </NavLink>
+                                
                             </div>
                             {
                                 user.followed 

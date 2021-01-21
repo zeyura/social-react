@@ -15,7 +15,6 @@ let mapStateToProps = (state) => {
   }
 }
 
-
 let UsersContainer = connect(mapStateToProps, {
   follow,
   unfollow,
