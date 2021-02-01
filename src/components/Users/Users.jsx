@@ -3,6 +3,7 @@ import React from 'react'
 import {NavLink} from "react-router-dom";
 import Preloader from '../common/Preloader'
 import s from './Users.module.css'
+import {getUsers} from "../../API/api";
 
 
 class Users extends React.Component {
@@ -15,13 +16,11 @@ class Users extends React.Component {
 
         if(!this.props.users.length) {
             this.props.toggleLoader(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
-                withCredentials: true
-            })
-            .then(
-                response => {
-                    this.props.setUsers(response.data.items);
-                    this.props.setTotalUsersCount(response.data.totalCount);
+
+            getUsers(this.props.currentPage, this.props.pageSize)
+                .then(data => {
+                    this.props.setUsers(data.items)
+                    this.props.setTotalUsersCount(data.totalCount)
 
                     this.props.toggleLoader(false)
                 }
@@ -32,30 +31,25 @@ class Users extends React.Component {
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber)
+        this.props.toggleLoader(true)
 
-            this.props.toggleLoader(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
-                withCredentials: true
-            })
-            .then(
-                response => {
-                    this.props.setUsers(response.data.items)
-                    this.props.toggleLoader(false)
-                }
-            )
+        getUsers(pageNumber, this.props.pageSize)
+            .then(data => {
+                this.props.setUsers(data.items)
+                this.props.toggleLoader(false)
+            }
+        )
     }
 
     onPageFirst = () => {
         this.props.setCurrentPage(1)
 
-             this.props.toggleLoader(true)
+        this.props.toggleLoader(true)
 
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=1&count=${this.props.pageSize}`, {
-                withCredentials: true
-            })
+        getUsers(1, this.props.pageSize)
             .then(
-                response => {
-                    this.props.setUsers(response.data.items)
+                data => {
+                    this.props.setUsers(data.items)
                     this.props.toggleLoader(false)
                 }
             )
@@ -66,13 +60,12 @@ class Users extends React.Component {
         if(pageNumber < 1) return
         this.props.setCurrentPage(pageNumber)
 
-            this.props.toggleLoader(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
-                withCredentials: true
-            })
+        this.props.toggleLoader(true)
+
+        getUsers(pageNumber, this.props.pageSize)
             .then(
-                response => {
-                    this.props.setUsers(response.data.items)
+                data => {
+                    this.props.setUsers(data.items)
                     this.props.toggleLoader(false)
                 }
             )
@@ -84,13 +77,12 @@ class Users extends React.Component {
         if(pageNumber > pagesCount) return
         this.props.setCurrentPage(pageNumber)
 
-            this.props.toggleLoader(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
-                withCredentials: true
-            })
+        this.props.toggleLoader(true)
+
+        getUsers(pageNumber, this.props.pageSize)
             .then(
-                response => {
-                    this.props.setUsers(response.data.items)
+                data => {
+                    this.props.setUsers(data.items)
                     this.props.toggleLoader(false)
                 }
             )
@@ -100,19 +92,16 @@ class Users extends React.Component {
         let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
         this.props.setCurrentPage(pagesCount)
 
-            this.props.toggleLoader(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pagesCount}&count=${this.props.pageSize}`, {
-                withCredentials: true
-            })
+        this.props.toggleLoader(true)
+
+        getUsers(pagesCount, this.props.pageSize)
             .then(
-                response => {
-                    this.props.setUsers(response.data.items)
+                data => {
+                    this.props.setUsers(data.items)
                     this.props.toggleLoader(false)
                 }
             )
     }
-
-    //////////////////////////
 
     /// Follow - Unfollow
 
@@ -180,11 +169,11 @@ class Users extends React.Component {
         return <>
            
             {
-              this.props.isLoading ?
-              (  <div className={s.loader}>
-                  <Preloader />
-                  </div> ) :
-              null
+                this.props.isLoading ?
+                    (  <div className={s.loader}>
+                       <Preloader />
+                    </div> ) :
+                null
             }
 
             <div className={s.paginator}>
