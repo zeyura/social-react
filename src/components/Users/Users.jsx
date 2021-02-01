@@ -9,14 +9,15 @@ class Users extends React.Component {
 
     constructor(props) {
         super(props)
-
     }
 
     componentDidMount() {
 
         if(!this.props.users.length) {
             this.props.toggleLoader(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+                withCredentials: true
+            })
             .then(
                 response => {
                     this.props.setUsers(response.data.items);
@@ -33,7 +34,9 @@ class Users extends React.Component {
         this.props.setCurrentPage(pageNumber)
 
             this.props.toggleLoader(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
+                withCredentials: true
+            })
             .then(
                 response => {
                     this.props.setUsers(response.data.items)
@@ -47,7 +50,9 @@ class Users extends React.Component {
 
              this.props.toggleLoader(true)
 
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=1&count=${this.props.pageSize}`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=1&count=${this.props.pageSize}`, {
+                withCredentials: true
+            })
             .then(
                 response => {
                     this.props.setUsers(response.data.items)
@@ -62,7 +67,9 @@ class Users extends React.Component {
         this.props.setCurrentPage(pageNumber)
 
             this.props.toggleLoader(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
+                withCredentials: true
+            })
             .then(
                 response => {
                     this.props.setUsers(response.data.items)
@@ -78,7 +85,9 @@ class Users extends React.Component {
         this.props.setCurrentPage(pageNumber)
 
             this.props.toggleLoader(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
+                withCredentials: true
+            })
             .then(
                 response => {
                     this.props.setUsers(response.data.items)
@@ -92,7 +101,9 @@ class Users extends React.Component {
         this.props.setCurrentPage(pagesCount)
 
             this.props.toggleLoader(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pagesCount}&count=${this.props.pageSize}`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pagesCount}&count=${this.props.pageSize}`, {
+                withCredentials: true
+            })
             .then(
                 response => {
                     this.props.setUsers(response.data.items)
@@ -102,6 +113,42 @@ class Users extends React.Component {
     }
 
     //////////////////////////
+
+    /// Follow - Unfollow
+
+    onFollow = (userId) => {
+        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, null, {
+            withCredentials: true, // в пост запросе настройки идут третьим параметром, второй пока  налл
+            headers: {
+                'API-KEY': '392dbd65-2eda-411c-bd67-5438fae2e1ef', // my key here  https://social-network.samuraijs.com/account
+            }
+        }).then(
+                response => {
+                    if(response.data.resultCode === 0) {
+                        this.props.follow(userId)
+                    }
+                    //this.props.toggleLoader(false)
+                }
+            )
+    }
+
+    onUnfollow = (userId) => {
+        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
+            withCredentials: true, // в delete запросе настройки идут 2th параметром
+            headers: {
+                'API-KEY': '392dbd65-2eda-411c-bd67-5438fae2e1ef', // my key here  https://social-network.samuraijs.com/account
+            }
+        }).then(
+            response => {
+                if(response.data.resultCode === 0) {
+                    this.props.unfollow(userId)
+                }
+                //this.props.toggleLoader(false)
+            }
+        )
+    }
+
+    ///////////// Follow End -------------
 
     render() {
 
@@ -210,8 +257,8 @@ class Users extends React.Component {
                             </div>
                             {
                                 user.followed 
-                                ? <button onClick={(e) => this.props.unfollow(user.id,e)}>Unfollow</button> 
-                                : <button onClick={() => this.props.follow(user.id)}>Follow</button>
+                                ? <button onClick={() => this.onUnfollow(user.id)}>Unfollow</button>
+                                : <button onClick={() => this.onFollow(user.id)}>Follow</button>
                             }
                             
                         </div>
