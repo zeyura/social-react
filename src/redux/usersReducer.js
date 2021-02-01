@@ -1,5 +1,5 @@
-const FOLLOW    = 'FOLLOW'
-const UNFOLLOW  = 'UNFOLLOW'
+const FOLLOW = 'FOLLOW'
+const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
 
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
@@ -19,21 +19,21 @@ let initialState = {
 const usersReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case FOLLOW: 
+        case FOLLOW:
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if(u.id === action.userId) {
+                    if (u.id === action.userId) {
                         return {...u, followed: true}
                     }
                     return u
                 })
             }
-        case UNFOLLOW: 
+        case UNFOLLOW:
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if( u.id === action.userId ) {
+                    if (u.id === action.userId) {
                         return {...u, followed: false}
                     }
                     return u
@@ -41,25 +41,25 @@ const usersReducer = (state = initialState, action) => {
             }
         case SET_USERS:
             return {
-                ...state, 
-                users: [ ...action.users ] // psevdo push()          
+                ...state,
+                users: [...action.users] // psevdo push()
             }
 
         case SET_CURRENT_PAGE:
             return {
-                ...state, 
-                currentPage: action.currentPage      
+                ...state,
+                currentPage: action.currentPage
             }
         case SET_TOTAL_USERS_COUNT:
             return {
-                ...state, 
-                totalUsersCount: action.totalUsersCount      
+                ...state,
+                totalUsersCount: action.totalUsersCount
             }
         case SET_LOADER:
             return {
-                ...state, 
-                isLoading: action.loader    
-            }    
+                ...state,
+                isLoading: action.loader
+            }
 
         default:
             return state
@@ -67,15 +67,14 @@ const usersReducer = (state = initialState, action) => {
 
 }
 
-export const follow   = (userId) => ({type: FOLLOW, userId})
+export const follow = (userId) => ({type: FOLLOW, userId})
 export const unfollow = (userId) => ({type: UNFOLLOW, userId})
-export const setUsers = (users)  => ({type: SET_USERS, users})
+export const setUsers = (users) => ({type: SET_USERS, users})
 
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount})
 
-export const toggleLoader  = (loader) => ({type: SET_LOADER, loader})
-
+export const toggleLoader = (loader) => ({type: SET_LOADER, loader})
 
 
 export default usersReducer

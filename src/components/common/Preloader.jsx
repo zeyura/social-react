@@ -1,7 +1,7 @@
 let Preloader = (props) => {
     return (
         <>
-             <img src={'/loader.gif'} ></img>
+            <img src={'/loader.gif'}></img>
         </>
     )
 }
