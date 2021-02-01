@@ -29,12 +29,10 @@ class HeaderContainer extends React.Component {
 }
 
 
-
 let mapStateToProps = (state) => ({
     logged: state.auth.isLogged,
     login:  state.auth.login,
 })
-
 
 export default connect(mapStateToProps, {
 
