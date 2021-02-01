@@ -3,7 +3,7 @@ import React from 'react'
 import {NavLink} from "react-router-dom";
 import Preloader from '../common/Preloader'
 import s from './Users.module.css'
-import {getUsers} from "../../API/api";
+import {followUser, unfollowUser, getUsers} from "../../API/api";
 
 
 class Users extends React.Component {
@@ -103,17 +103,13 @@ class Users extends React.Component {
             )
     }
 
-    /// Follow - Unfollow
+    /// -------- Follow - Unfollow
 
     onFollow = (userId) => {
-        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, null, {
-            withCredentials: true, // в пост запросе настройки идут третьим параметром, второй пока  налл
-            headers: {
-                'API-KEY': '392dbd65-2eda-411c-bd67-5438fae2e1ef', // my key here  https://social-network.samuraijs.com/account
-            }
-        }).then(
-                response => {
-                    if(response.data.resultCode === 0) {
+        followUser(userId)
+            .then(
+                data => {
+                    if(data.resultCode === 0) {
                         this.props.follow(userId)
                     }
                     //this.props.toggleLoader(false)
@@ -122,18 +118,14 @@ class Users extends React.Component {
     }
 
     onUnfollow = (userId) => {
-        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
-            withCredentials: true, // в delete запросе настройки идут 2th параметром
-            headers: {
-                'API-KEY': '392dbd65-2eda-411c-bd67-5438fae2e1ef', // my key here  https://social-network.samuraijs.com/account
-            }
-        }).then(
-            response => {
-                if(response.data.resultCode === 0) {
-                    this.props.unfollow(userId)
+        unfollowUser(userId)
+            .then(
+                data => {
+                    if(data.resultCode === 0) {
+                        this.props.unfollow(userId)
+                    }
+                    //this.props.toggleLoader(false)
                 }
-                //this.props.toggleLoader(false)
-            }
         )
     }
 

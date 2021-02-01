@@ -1,8 +1,7 @@
 import React from 'react'
 import Class from "./Header.module.css"
 import {NavLink} from "react-router-dom"
-import {connect} from "react-redux";
-//import NavLink from ''
+
 
 function Header(props) {
   return (
