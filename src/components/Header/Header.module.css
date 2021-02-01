@@ -14,3 +14,19 @@
   height: 77px;
   transform: translateY(3px);
 }
+
+.headerInner {
+    width: 100%;
+}
+
+.loginBlock {
+  float: right;
+}
+
+.loginBlock a {
+    color: #444444;
+}
+
+.loginBlock a:hover {
+    color: darkorchid;
+}
