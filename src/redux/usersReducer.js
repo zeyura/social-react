@@ -5,6 +5,7 @@ const SET_USERS = 'SET_USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 const SET_LOADER = 'SET_LOADER'
+const IS_FOLLOWING_PROGRESS = 'IS_FOLLOWING_PROGRESS'
 
 
 let initialState = {
@@ -13,7 +14,8 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     siblingsCount: 2, // колво  соседних показаних страниц..
-    isLoading: false
+    isLoading: false,
+    followingInProgress: [], // тут будут id кнопок которые щас  фоловятся или унфоловятся - disabled
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -60,6 +62,13 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: action.loader
             }
+        case IS_FOLLOWING_PROGRESS:
+            return {
+                ...state,
+                followingInProgress: action.progress ?
+                [...state.followingInProgress, action.userId] : // add userid
+                    state.followingInProgress.filter(id => id != action.userId) // remove userId
+            }
 
         default:
             return state
@@ -75,6 +84,6 @@ export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, current
 export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount})
 
 export const toggleLoader = (loader) => ({type: SET_LOADER, loader})
-
+export const toggleFollowProgress = (progress, userId) => ({type: IS_FOLLOWING_PROGRESS, progress, userId})
 
 export default usersReducer

@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React from 'react'
 import {NavLink} from "react-router-dom";
 import Preloader from '../common/Preloader'
@@ -106,25 +105,27 @@ class Users extends React.Component {
     /// -------- Follow - Unfollow
 
     onFollow = (userId) => {
+        this.props.toggleFollowProgress(true, userId)
         followUser(userId)
             .then(
                 data => {
                     if(data.resultCode === 0) {
                         this.props.follow(userId)
                     }
-                    //this.props.toggleLoader(false)
+                    this.props.toggleFollowProgress(false, userId)
                 }
             )
     }
 
     onUnfollow = (userId) => {
+        this.props.toggleFollowProgress(true, userId)
         unfollowUser(userId)
             .then(
                 data => {
                     if(data.resultCode === 0) {
                         this.props.unfollow(userId)
                     }
-                    //this.props.toggleLoader(false)
+                    this.props.toggleFollowProgress(false, userId)
                 }
         )
     }
@@ -238,8 +239,14 @@ class Users extends React.Component {
                             </div>
                             {
                                 user.followed 
-                                ? <button onClick={() => this.onUnfollow(user.id)}>Unfollow</button>
-                                : <button onClick={() => this.onFollow(user.id)}>Follow</button>
+                                ? <button
+                                        disabled={this.props.followingInProgress.some(id => id === user.id)}
+                                        onClick={() => this.onUnfollow(user.id)}
+                                    >Unfollow</button>
+                                : <button
+                                        disabled={this.props.followingInProgress.some(id => id === user.id)}
+                                        onClick={() => this.onFollow(user.id)}
+                                    >Follow</button>
                             }
                             
                         </div>
