@@ -1,4 +1,4 @@
-import {getUsers} from "../API/api";
+import {followUser, unfollowUser, getUsers} from "../API/api";
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -89,8 +89,8 @@ export const toggleLoader = (loader) => ({type: SET_LOADER, loader})
 export const toggleFollowProgress = (progress, userId) => ({type: IS_FOLLOWING_PROGRESS, progress, userId})
 
 ///    Thunks  --------------
-
-export const getUsersThunkCreator = (currentPage, pageSize) => {
+//  getUsersThunkCreator ->
+export const GET_USERS = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toggleLoader(true))
         getUsers(currentPage, pageSize)
@@ -98,6 +98,36 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
                     dispatch(setUsers(data.items))
                     dispatch(setTotalUsersCount(data.totalCount))
                     dispatch(toggleLoader(false))
+                }
+            )
+    }
+}
+/// followUserThunkCreator
+export const FOLLOW_USER = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowProgress(true, userId))
+        followUser(userId)
+            .then(
+                data => {
+                    if(data.resultCode === 0) {
+                        dispatch(follow(userId))
+                    }
+                    dispatch(toggleFollowProgress(false, userId))
+                }
+            )
+    }
+}
+
+export const UN_FOLLOW_USER = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowProgress(true, userId))
+        unfollowUser(userId)
+            .then(
+                data => {
+                    if(data.resultCode === 0) {
+                        dispatch(unfollow(userId))
+                    }
+                    dispatch(toggleFollowProgress(false, userId))
                 }
             )
     }

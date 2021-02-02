@@ -2,8 +2,6 @@ import React from 'react'
 import {NavLink} from "react-router-dom";
 import Preloader from '../common/Preloader'
 import s from './Users.module.css'
-import {followUser, unfollowUser, getUsers} from "../../API/api";
-import {getUsersThunkCreator} from "../../redux/usersReducer";
 
 
 class Users extends React.Component {
@@ -15,51 +13,36 @@ class Users extends React.Component {
     componentDidMount() {
 
         if(!this.props.users.length) {
-            this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
+            this.props.GET_USERS(this.props.currentPage, this.props.pageSize)
         }
 
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber)
-        this.props.toggleLoader(true)
-
-        getUsers(pageNumber, this.props.pageSize)
-            .then(data => {
-                this.props.setUsers(data.items)
-                this.props.toggleLoader(false)
-            }
-        )
+        this.props.GET_USERS(pageNumber, this.props.pageSize)
     }
 
-    onPageFirst = () => {
-        this.props.setCurrentPage(1)
-
-        this.props.toggleLoader(true)
-
-        getUsers(1, this.props.pageSize)
-            .then(
-                data => {
-                    this.props.setUsers(data.items)
-                    this.props.toggleLoader(false)
-                }
-            )
-    }
+    // onPageFirst = () => {
+    //     this.props.setCurrentPage(1)
+    //
+    //     this.props.toggleLoader(true)
+    //
+    //     getUsers(1, this.props.pageSize)
+    //         .then(
+    //             data => {
+    //                 this.props.setUsers(data.items)
+    //                 this.props.toggleLoader(false)
+    //             }
+    //         )
+    // }
 
     onPagePrev = () => {
         let pageNumber = this.props.currentPage - 1;
         if(pageNumber < 1) return
         this.props.setCurrentPage(pageNumber)
 
-        this.props.toggleLoader(true)
-
-        getUsers(pageNumber, this.props.pageSize)
-            .then(
-                data => {
-                    this.props.setUsers(data.items)
-                    this.props.toggleLoader(false)
-                }
-            )
+        this.props.GET_USERS(pageNumber, this.props.pageSize)
     }
 
     onPageNext = () => {
@@ -68,58 +51,32 @@ class Users extends React.Component {
         if(pageNumber > pagesCount) return
         this.props.setCurrentPage(pageNumber)
 
-        this.props.toggleLoader(true)
-
-        getUsers(pageNumber, this.props.pageSize)
-            .then(
-                data => {
-                    this.props.setUsers(data.items)
-                    this.props.toggleLoader(false)
-                }
-            )
+        this.props.GET_USERS(pageNumber, this.props.pageSize)
     }
 
-    onPageLast = () => {
-        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
-        this.props.setCurrentPage(pagesCount)
-
-        this.props.toggleLoader(true)
-
-        getUsers(pagesCount, this.props.pageSize)
-            .then(
-                data => {
-                    this.props.setUsers(data.items)
-                    this.props.toggleLoader(false)
-                }
-            )
-    }
+    // onPageLast = () => {
+    //     let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+    //     this.props.setCurrentPage(pagesCount)
+    //
+    //     this.props.toggleLoader(true)
+    //
+    //     getUsers(pagesCount, this.props.pageSize)
+    //         .then(
+    //             data => {
+    //                 this.props.setUsers(data.items)
+    //                 this.props.toggleLoader(false)
+    //             }
+    //         )
+    // }
 
     /// -------- Follow - Unfollow
 
     onFollow = (userId) => {
-        this.props.toggleFollowProgress(true, userId)
-        followUser(userId)
-            .then(
-                data => {
-                    if(data.resultCode === 0) {
-                        this.props.follow(userId)
-                    }
-                    this.props.toggleFollowProgress(false, userId)
-                }
-            )
+        this.props.FOLLOW_USER(userId)
     }
 
     onUnfollow = (userId) => {
-        this.props.toggleFollowProgress(true, userId)
-        unfollowUser(userId)
-            .then(
-                data => {
-                    if(data.resultCode === 0) {
-                        this.props.unfollow(userId)
-                    }
-                    this.props.toggleFollowProgress(false, userId)
-                }
-        )
+        this.props.UN_FOLLOW_USER(userId)
     }
 
     ///////////// Follow End -------------
@@ -162,9 +119,9 @@ class Users extends React.Component {
 
             <div className={s.paginator}>
                 {
-                    currentPage > 1 ?
-                  ( <span onClick={ this.onPageFirst }> &le; </span> ) :
-                  ( <span className={ s.passive }> &le; </span> )
+                  //  currentPage > 1 ?
+                  //( <span onClick={ this.onPageFirst }> &le; </span> ) :
+                  //( <span className={ s.passive }> &le; </span> )
                 }
                 {
                   currentPage > 1 ?
@@ -204,9 +161,9 @@ class Users extends React.Component {
                     ( <span className={ s.passive }> &gt; </span> )
                 }
                 {
-                    currentPage < pagesCount ?
-                    ( <span onClick={ this.onPageLast }> &ge; </span> ) :
-                    ( <span className={ s.passive }> &ge; </span> )
+                    // currentPage < pagesCount ?
+                    // ( <span onClick={ this.onPageLast }> &ge; </span> ) :
+                    // ( <span className={ s.passive }> &ge; </span> )
                 }
             </div>
 
