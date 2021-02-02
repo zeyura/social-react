@@ -3,6 +3,7 @@ import {NavLink} from "react-router-dom";
 import Preloader from '../common/Preloader'
 import s from './Users.module.css'
 import {followUser, unfollowUser, getUsers} from "../../API/api";
+import {getUsersThunkCreator} from "../../redux/usersReducer";
 
 
 class Users extends React.Component {
@@ -14,16 +15,7 @@ class Users extends React.Component {
     componentDidMount() {
 
         if(!this.props.users.length) {
-            this.props.toggleLoader(true)
-
-            getUsers(this.props.currentPage, this.props.pageSize)
-                .then(data => {
-                    this.props.setUsers(data.items)
-                    this.props.setTotalUsersCount(data.totalCount)
-
-                    this.props.toggleLoader(false)
-                }
-            )
+            this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
         }
 
     }
@@ -133,7 +125,6 @@ class Users extends React.Component {
     ///////////// Follow End -------------
 
     render() {
-
 
         let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
 

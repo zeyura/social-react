@@ -1,3 +1,5 @@
+import {getUsers} from "../API/api";
+
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
@@ -85,5 +87,21 @@ export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_C
 
 export const toggleLoader = (loader) => ({type: SET_LOADER, loader})
 export const toggleFollowProgress = (progress, userId) => ({type: IS_FOLLOWING_PROGRESS, progress, userId})
+
+///    Thunks  --------------
+
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleLoader(true))
+        getUsers(currentPage, pageSize)
+            .then(data => {
+                    dispatch(setUsers(data.items))
+                    dispatch(setTotalUsersCount(data.totalCount))
+                    dispatch(toggleLoader(false))
+                }
+            )
+    }
+}
+
 
 export default usersReducer
