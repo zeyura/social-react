@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    follow, unfollow, setCurrentPage,
+    setCurrentPage,
     GET_USERS, FOLLOW_USER, UN_FOLLOW_USER
 } from "../../redux/usersReducer"
 import Users from "./Users"
