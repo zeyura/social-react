@@ -5,7 +5,9 @@ import {
 } from "../../redux/usersReducer"
 import Users from "./Users"
 import { connect } from 'react-redux'
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
+let authRedirectComponent = withAuthRedirect(Users) // HOC  withAuthRedirect
 
 let mapStateToProps = (state) => {
   return {
@@ -24,6 +26,6 @@ let UsersContainer = connect(mapStateToProps, {
     GET_USERS,
     FOLLOW_USER,
     UN_FOLLOW_USER
-})(Users)
+})(authRedirectComponent)
 
 export default UsersContainer
