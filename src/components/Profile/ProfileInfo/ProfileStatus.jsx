@@ -16,19 +16,19 @@ class ProfileStatus extends React.Component {
 
     // ------------------ Methods ---------
 
-    acivateEditMode() {
+    acivateEditMode = () => {
         this.setState({
             editMode: true
         })
     }
 
-    deacivateEditMode() {
+    deacivateEditMode = () => {
         this.setState({
             editMode: false
         })
     }
 
-    changeStatus(e) {
+    changeStatus = (e) => {
         let text = e.target.value
         this.setState({
             statusText: text
@@ -42,7 +42,7 @@ class ProfileStatus extends React.Component {
             <div className={s.statusBlock}>
                 { !this.state.editMode &&
                     <div>
-                        <span onDoubleClick={ this.acivateEditMode.bind(this) } >
+                        <span onDoubleClick={ this.acivateEditMode } >
                             {this.state.statusText}
                         </span>
                     </div>
@@ -52,8 +52,8 @@ class ProfileStatus extends React.Component {
                         <input type='text'
                                value={this.state.statusText}
                                autoFocus={true}
-                               onBlur={ this.deacivateEditMode.bind(this) }
-                               onChange={ this.changeStatus.bind(this) }
+                               onBlur={ this.deacivateEditMode }
+                               onChange={ this.changeStatus }
                         />
                     </div>
                 }
