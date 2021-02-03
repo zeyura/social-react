@@ -40,14 +40,14 @@ class ProfileStatus extends React.Component {
     render() {
         return (
             <div className={s.statusBlock}>
-                { !this.state.editMode &&
+                { !this.state.editMode
+                    ?
                     <div>
-                        <span onDoubleClick={ this.acivateEditMode } >
+                        <span onClick={ this.acivateEditMode } >
                             {this.state.statusText}
                         </span>
                     </div>
-                }
-                {this.state.editMode &&
+                    :
                     <div>
                         <input type='text'
                                value={this.state.statusText}
