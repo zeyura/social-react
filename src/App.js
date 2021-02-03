@@ -10,24 +10,24 @@ import LoginPage from './components/Login/Login'
 
 const App = () => {
   return (
-    <div className='App'>
-        <HeaderContainer />
-        <Navbar />
-        <div className='app-wrapper-content'>
-            <Route path='/dialogs'
-              render={ () => <DialogsContainer /> }/>
+      <div className='App'>
+          <HeaderContainer />
+          <Navbar />
+          <div className='app-wrapper-content'>
+              <Route path='/dialogs'
+                     render={ () => <DialogsContainer /> }/>
 
-            <Route path='/profile/:userId?'
-              render={ () => <ProfileContainer /> }/>
+              <Route path='/profile/:userId?'
+                     render={ () => <ProfileContainer /> }/>
 
-            <Route path='/users'
-              render={ () => <UsersContainer /> }/>
+              <Route path='/users'
+                     render={ () => <UsersContainer /> }/>
 
-            <Route path='/login'
-                   render={ () => <LoginPage /> }/>
-        </div>
-    </div>
-) 
+              <Route path='/login'
+                     render={ () => <LoginPage /> }/>
+          </div>
+      </div>
+  )
 }
 
 export default App;
