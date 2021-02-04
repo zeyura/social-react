@@ -29,14 +29,14 @@ class ProfileStatus extends React.Component {
         })
     }
 
-    changeStatus = (e) => {
-        let text = e.target.value
+    onChangeStatus = (e) => {
+        let text = e.currentTarget.value
         this.setState({
             statusText: text
         })
     }
 
-    //////////////////////
+    ////////////////
 
     render() {
         return (
@@ -45,7 +45,7 @@ class ProfileStatus extends React.Component {
                     ?
                     <div>
                         <span onClick={ this.acivateEditMode } >
-                            {this.state.statusText}
+                            {this.props.status || 'Status loading...'}
                         </span>
                     </div>
                     :
@@ -54,7 +54,7 @@ class ProfileStatus extends React.Component {
                                value={this.state.statusText}
                                autoFocus={true}
                                onBlur={ this.deacivateEditMode }
-                               onChange={ this.changeStatus }
+                               onChange={ this.onChangeStatus }
                         />
                     </div>
                 }

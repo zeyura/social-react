@@ -1,4 +1,4 @@
-import {followUser, unfollowUser, getUsers} from "../API/api";
+import {usersAPI} from "../API/api";
 
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
@@ -93,7 +93,7 @@ export const toggleFollowProgress = (progress, userId) => ({type: IS_FOLLOWING_P
 export const GET_USERS = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toggleLoader(true))
-        getUsers(currentPage, pageSize)
+        usersAPI.getUsers(currentPage, pageSize)
             .then(data => {
                     dispatch(setUsers(data.items))
                     dispatch(setTotalUsersCount(data.totalCount))
@@ -106,7 +106,7 @@ export const GET_USERS = (currentPage, pageSize) => {
 export const FOLLOW_USER = (userId) => {
     return (dispatch) => {
         dispatch(toggleFollowProgress(true, userId))
-        followUser(userId)
+        usersAPI.followUser(userId)
             .then(
                 data => {
                     if(data.resultCode === 0) {
@@ -121,7 +121,7 @@ export const FOLLOW_USER = (userId) => {
 export const UN_FOLLOW_USER = (userId) => {
     return (dispatch) => {
         dispatch(toggleFollowProgress(true, userId))
-        unfollowUser(userId)
+        usersAPI.unfollowUser(userId)
             .then(
                 data => {
                     if(data.resultCode === 0) {

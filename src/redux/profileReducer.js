@@ -88,8 +88,11 @@ export const UPDATE_STATUS = (status) => {
         profileAPI.updateStatus(status)
             .then(
                 response => {
+
                     if(response.data.resultCode === 0) {
                         dispatch(setStatus(status))
+                    } else {
+                        //
                     }
                 }
             )
