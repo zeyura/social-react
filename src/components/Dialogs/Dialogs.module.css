@@ -74,3 +74,8 @@
   border-left-color: rgb(240, 240, 240);
   transform: rotate(-45deg);
 }
+
+
+.dialogForm {
+  margin: 0;
+}

@@ -1,5 +1,7 @@
+
+
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
-const SEND_MESSAGE = 'SEND_MESSAGE';
+const SET_MESSAGE = 'SET_MESSAGE';
 
 let initialState = {
     dialogs: [
@@ -27,20 +29,39 @@ const dialogsReducer = (state = initialState, action) => {
               ...state,
               newMessageBody: action.body
             }
-       case SEND_MESSAGE:
-           let body = state.newMessageBody
+       case SET_MESSAGE:
+           let message = action.message
+           let newId = state.messages.length + 1
            return {
             ...state,
             newMessageBody: '>>',
-            messages: [...state.messages, {id: 9, key: 9, message: body}]  
+            messages: [...state.messages, {id: newId, message}]
           }
        default:
            return state;
    }
 }
 
-export const sendMessageCreator = () => ({type: SEND_MESSAGE})
-export const updateNewMessageBodyCreator = (body) =>
-    ({ type: UPDATE_NEW_MESSAGE_BODY, body: body })
+export const setMessage = (message) => ({type: SET_MESSAGE, message})
+
+
+
+export const SEND_MESSAGE = (message) => {
+    return (dispatch) => {
+        dispatch(setMessage(message))
+        // profileAPI.updateStatus(message)
+        //     .then(
+        //         response => {
+        //
+        //             if(response.data.resultCode === 0) {
+        //                 dispatch(setStatus(message))
+        //             } else {
+        //                 //
+        //             }
+        //         }
+        //     )
+    }
+}
+
 
 export default dialogsReducer;
