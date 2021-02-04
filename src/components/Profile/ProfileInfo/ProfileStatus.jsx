@@ -1,5 +1,4 @@
 import React from 'react'
-import Preloader from '../../common/Preloader';
 import s from './ProfileInfo.module.css';
 
 
@@ -38,6 +37,18 @@ class ProfileStatus extends React.Component {
 
     ////////////////
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('Update ProfileStatus!')
+
+        if(prevProps.status !== this.props.status) {
+            this.setState({
+                statusText: this.props.status
+            })
+        }
+
+    }
+
+
     render() {
         return (
             <div className={s.statusBlock}>
@@ -45,7 +56,7 @@ class ProfileStatus extends React.Component {
                     ?
                     <div>
                         <span onClick={ this.acivateEditMode } >
-                            {this.props.status || 'Status loading...'}
+                            {this.props.status || 'Status...'}
                         </span>
                     </div>
                     :
