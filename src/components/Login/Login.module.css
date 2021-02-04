@@ -1,0 +1,8 @@
+.loginForm {
+  margin: auto;
+width: 250px;
+}
+
+.loginForm > div {
+  margin: 1em auto;
+}
